@@ -805,16 +805,6 @@
                     <div class="info-value" id="val-owner"></div>
                 </div>
             </div>
-
-            <div class="info-row" data-field="primarycontactid" data-type="lookup">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 1.95c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 01-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 01-6 3.22z"/></svg>
-                </div>
-                <div class="info-content">
-                    <div class="info-label">Main Contact</div>
-                    <div class="info-value" id="val-maincontact"></div>
-                </div>
-            </div>
         </div>
 
         <!-- Relationship Health Section -->
@@ -1018,7 +1008,7 @@
                 "new_annualcontractvalue", "new_npsscore",
                 "new_churnrisk", "new_relationshipscore",
                 "entityimage_url",
-                "_parentaccountid_value", "_ownerid_value", "_primarycontactid_value",
+                "_parentaccountid_value", "_ownerid_value",
             ].join(",");
             return await crmApiFetch("/accounts(" + accountId + ")?$select=" + select);
         }
@@ -1160,10 +1150,6 @@
             // Parent Account
             const parentName = data["_parentaccountid_value@OData.Community.Display.V1.FormattedValue"] || "";
             setFieldValue("val-parentaccount", parentName, "None");
-
-            // Main Contact
-            const mainContact = data["_primarycontactid_value@OData.Community.Display.V1.FormattedValue"] || "";
-            setFieldValue("val-maincontact", mainContact, "Not set");
 
             // Revenue
             const rev = data.revenue;
