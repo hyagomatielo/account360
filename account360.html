@@ -196,19 +196,12 @@
         .profile-card.dark-text .insight-pill.medium { background: rgba(255,240,200,0.85); color: #8a5600; }
         .profile-card.dark-text .insight-pill.low { background: rgba(255,220,215,0.85); color: #a11b12; }
         .profile-card.dark-text .insight-compare { color: rgba(26,26,46,0.5); }
-        .profile-card.dark-text .rh-title { color: #1a1a2e; }
-        .profile-card.dark-text .rh-info-icon { border-color: rgba(26,26,46,0.4); color: rgba(26,26,46,0.5); }
-        .profile-card.dark-text .rh-updated { color: rgba(26,26,46,0.5); }
-        .profile-card.dark-text .rh-interaction-label { color: rgba(26,26,46,0.5); }
-        .profile-card.dark-text .rh-interaction-value { color: #1a1a2e; }
-        .profile-card.dark-text .rh-no-data { color: rgba(26,26,46,0.4); }
-        .profile-card.dark-text .rh-section { border-bottom-color: rgba(26,26,46,0.12); }
-        .profile-card.dark-text .rh-health-label.good { background: rgba(200,245,210,0.85); color: #0d6e1e; }
-        .profile-card.dark-text .rh-health-label.fair { background: rgba(255,240,200,0.85); color: #8a5600; }
-        .profile-card.dark-text .rh-health-label.poor { background: rgba(255,220,215,0.85); color: #a11b12; }
-        .profile-card.dark-text .rh-trend-badge.improving { background: rgba(200,245,210,0.85); color: #0d6e1e; }
-        .profile-card.dark-text .rh-trend-badge.steady { background: rgba(210,230,255,0.85); color: #004cb0; }
-        .profile-card.dark-text .rh-trend-badge.declining { background: rgba(240,215,255,0.85); color: #6a1e8a; }
+        .profile-card.dark-text .primary-contact-header { color: #1a1a2e; }
+        .profile-card.dark-text .primary-contact-card { background: rgba(26,26,46,0.05); border-color: rgba(26,26,46,0.1); }
+        .profile-card.dark-text .pc-avatar { background: rgba(26,26,46,0.1); color: #1a1a2e; }
+        .profile-card.dark-text .pc-name { color: #1a1a2e; }
+        .profile-card.dark-text .pc-role { color: rgba(26,26,46,0.6); }
+        .profile-card.dark-text .primary-contact-section { border-bottom-color: rgba(26,26,46,0.12); }
         .profile-card.dark-text .section-title { color: #1a1a2e; }
         .profile-card.dark-text .stat-value { color: #1a1a2e; }
         .profile-card.dark-text .stat-label { color: rgba(26,26,46,0.5); }
@@ -528,84 +521,79 @@
             margin-top: 2px;
         }
 
-        /* ─── Relationship Health Section ────── */
-        .rh-section {
+        /* ─── Primary Contact Section ────── */
+        .primary-contact-section {
             padding: 18px 0;
             border-bottom: 1px solid var(--divider);
         }
-        .rh-header {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 14px;
-        }
-        .rh-title {
+        .primary-contact-header {
             font-size: 13px;
             font-weight: 700;
             color: var(--text-white);
+            margin-bottom: 12px;
         }
-        .rh-info-icon {
-            width: 16px; height: 16px;
+        .primary-contact-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+        .pc-avatar {
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            border: 1.5px solid var(--text-muted);
+            background: rgba(255,255,255,0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--text-muted);
-            cursor: help;
             flex-shrink: 0;
-        }
-        .rh-updated {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-left: auto;
-        }
-        .rh-status-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 14px;
-        }
-        .rh-health-label {
+            overflow: hidden;
             font-size: 18px;
             font-weight: 700;
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 12px;
-        }
-        .rh-health-label.good { background: rgba(0,60,0,0.75); color: #6ef28e; }
-        .rh-health-label.fair { background: rgba(80,50,0,0.75); color: #ffd06a; }
-        .rh-health-label.poor { background: rgba(80,10,10,0.75); color: #ff8a80; }
-        .rh-trend-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .rh-trend-badge.improving { background: rgba(0,60,0,0.7); color: #6ef28e; }
-        .rh-trend-badge.steady { background: rgba(0,40,80,0.7); color: #8ad8ff; }
-        .rh-trend-badge.declining { background: rgba(60,10,80,0.7); color: #d8a0f0; }
-        .rh-trend-badge svg { width: 14px; height: 14px; fill: currentColor; }
-        .rh-interaction {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 0;
-        }
-        .rh-interaction-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            min-width: 110px;
-        }
-        .rh-interaction-value {
-            font-size: 13px;
-            font-weight: 600;
             color: var(--text-white);
+        }
+        .pc-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pc-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .pc-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .pc-role {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .pc-email {
+            font-size: 12px;
+            color: var(--accent);
+            margin-top: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-decoration: none;
+        }
+        .pc-email:hover { text-decoration: underline; }
+        .pc-no-data {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-style: italic;
         }
 
         /* ─── Inline Edit ───────────────────────── */
@@ -823,24 +811,16 @@
             </div>
         </div>
 
-        <!-- Relationship Health Section -->
-        <div class="rh-section" id="rh-section" style="display:none;">
-            <div class="rh-header">
-                <span class="rh-title">Relationship health</span>
-                <span class="rh-info-icon" title="Powered by Relationship Analytics from Dynamics 365 Sales Insights">i</span>
-                <span class="rh-updated" id="rh-updated"></span>
-            </div>
-            <div class="rh-status-row" id="rh-status-row">
-                <span class="rh-health-label" id="rh-health-label"></span>
-                <span class="rh-trend-badge" id="rh-trend-badge"></span>
-            </div>
-            <div class="rh-interaction">
-                <span class="rh-interaction-label">Next interaction:</span>
-                <span class="rh-interaction-value" id="rh-next-interaction">Not Scheduled</span>
-            </div>
-            <div class="rh-interaction">
-                <span class="rh-interaction-label">Last interaction:</span>
-                <span class="rh-interaction-value" id="rh-last-interaction">Not Scheduled</span>
+        <!-- Primary Contact -->
+        <div class="primary-contact-section" id="primary-contact-section">
+            <div class="primary-contact-header">Primary Contact</div>
+            <div class="primary-contact-card" id="primary-contact-card">
+                <div class="pc-avatar" id="pc-avatar"></div>
+                <div class="pc-info">
+                    <div class="pc-name" id="pc-name">Loading...</div>
+                    <div class="pc-role" id="pc-role"></div>
+                    <a class="pc-email" id="pc-email" href="#"></a>
+                </div>
             </div>
         </div>
 
@@ -1077,25 +1057,13 @@
             } catch (e) { return { won: 0, lost: 0 }; }
         }
 
-        async function fetchRelationshipHealth() {
+        async function fetchPrimaryContact() {
             try {
-                const data = await crmApiFetch("/msdyn_accountkpiitems?$filter=_msdyn_accountid_value eq " + accountId + "&$top=1&$select=msdyn_relationshiphealthscorestate,msdyn_relationshiphealthscorevalue,msdyn_relationshiphealthtrend,modifiedon");
-                return data && data.value && data.value.length > 0 ? data.value[0] : null;
-            } catch (e) { return null; }
-        }
-
-        async function fetchNextInteraction() {
-            try {
-                const now = new Date().toISOString();
-                const data = await crmApiFetch("/activitypointers?$filter=_regardingobjectid_value eq " + accountId + " and scheduledstart gt " + now + " and statecode eq 0&$orderby=scheduledstart asc&$top=1&$select=subject,scheduledstart,activitytypecode");
-                return data && data.value && data.value.length > 0 ? data.value[0] : null;
-            } catch (e) { return null; }
-        }
-
-        async function fetchLastInteraction() {
-            try {
-                const data = await crmApiFetch("/activitypointers?$filter=_regardingobjectid_value eq " + accountId + " and statecode eq 1&$orderby=actualend desc&$top=1&$select=subject,actualend,activitytypecode");
-                return data && data.value && data.value.length > 0 ? data.value[0] : null;
+                const acct = await crmApiFetch("/accounts(" + accountId + ")?$select=_primarycontactid_value");
+                const contactId = acct && acct._primarycontactid_value;
+                if (!contactId) return null;
+                const contact = await crmApiFetch("/contacts(" + contactId + ")?$select=fullname,jobtitle,emailaddress1,entityimage_url");
+                return contact || null;
             } catch (e) { return null; }
         }
 
@@ -1639,14 +1607,12 @@
 
                 // Load related data in parallel
                 Promise.all([
-                    fetchRelationshipHealth(),
-                    fetchNextInteraction(),
-                    fetchLastInteraction(),
+                    fetchPrimaryContact(),
                     fetchOpenCases(),
                     fetchDeals(),
                     fetchOpenOpportunities(),
-                ]).then(([kpi, nextAct, lastAct, openCases, deals, openOpps]) => {
-                    renderRelationshipHealth(kpi, nextAct, lastAct);
+                ]).then(([primaryContact, openCases, deals, openOpps]) => {
+                    renderPrimaryContact(primaryContact);
                     if (openCases != null) {
                         setFieldValue("val-opencases", String(openCases));
                     }
