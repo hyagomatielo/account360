@@ -1007,7 +1007,7 @@
                 "new_annualcontractvalue", "new_npsscore",
                 "new_churnrisk", "new_relationshipscore",
                 "entityimage_url",
-                "_parentaccountid_value", "_ownerid_value",
+                "_parentaccountid_value", "_ownerid_value", "_primarycontactid_value",
             ].join(",");
             return await crmApiFetch("/accounts(" + accountId + ")?$select=" + select);
         }
@@ -1059,10 +1059,15 @@
 
         async function fetchPrimaryContact() {
             try {
-                const acct = await crmApiFetch("/accounts(" + accountId + ")?$select=_primarycontactid_value");
-                const contactId = acct && acct._primarycontactid_value;
+                const contactId = accountData && accountData._primarycontactid_value;
                 if (!contactId) return null;
-                const contact = await crmApiFetch("/contacts(" + contactId + ")?$select=fullname,jobtitle,emailaddress1,entityimage_url");
+                const contact = await crmApiFetch("/contacts(" + contactId + ")?$select=fullname,jobtitle,emailaddress1");
+                if (contact) {
+                    try {
+                        const imgData = await crmApiFetch("/contacts(" + contactId + ")/entityimage_url");
+                        if (imgData && imgData.value) contact._entityimage_url = imgData.value;
+                    } catch (imgErr) {}
+                }
                 return contact || null;
             } catch (e) { return null; }
         }
@@ -1263,57 +1268,34 @@
             document.getElementById("deals-lost-label").textContent = "Lost: " + deals.lost;
         }
 
-        // ─── Render Relationship Health ─────────────────────────
-        const HEALTH_STATE_MAP = { 0: "Good", 1: "Fair", 2: "Poor", 3: "Not enough info", 4: "No Closed Activities", 5: "Computing...", 6: "Error", 7: "Too old" };
-        const HEALTH_STATE_CSS = { 0: "good", 1: "fair", 2: "poor" };
-        const HEALTH_TREND_MAP = { 0: "Improving", 1: "Steady", 2: "Declining", 3: "N/A", 4: "Error", 5: "N/A" };
-        const HEALTH_TREND_CSS = { 0: "improving", 1: "steady", 2: "declining" };
-        const TREND_ICONS = {
-            0: '<svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>',
-            1: '<svg viewBox="0 0 24 24"><path d="M4 11h16v2H4z"/></svg>',
-            2: '<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>',
-        };
-
-        function renderRelationshipHealth(kpi, nextAct, lastAct) {
-            const section = document.getElementById("rh-section");
-            if (!kpi) { section.style.display = "none"; return; }
-            section.style.display = "";
-            const state = kpi.msdyn_relationshiphealthscorestate;
-            const trend = kpi.msdyn_relationshiphealthtrend;
-
-            const label = document.getElementById("rh-health-label");
-            label.textContent = HEALTH_STATE_MAP[state] || "Unknown";
-            label.className = "rh-health-label " + (HEALTH_STATE_CSS[state] || "");
-
-            const badge = document.getElementById("rh-trend-badge");
-            if (trend != null && HEALTH_TREND_MAP[trend] && trend <= 2) {
-                badge.innerHTML = (TREND_ICONS[trend] || "") + HEALTH_TREND_MAP[trend];
-                badge.className = "rh-trend-badge " + (HEALTH_TREND_CSS[trend] || "");
-                badge.style.display = "";
-            } else {
-                badge.style.display = "none";
+        // ─── Render Primary Contact ─────────────────────────────
+        function renderPrimaryContact(contact) {
+            if (!contact) {
+                document.getElementById("pc-name").textContent = "";
+                document.getElementById("pc-role").textContent = "";
+                document.getElementById("pc-email").textContent = "";
+                document.getElementById("pc-email").href = "#";
+                var card = document.getElementById("primary-contact-card");
+                card.innerHTML = '<div class="pc-no-data">No primary contact set</div>';
+                return;
             }
-
-            const updated = kpi.modifiedon;
-            if (updated) {
-                const d = new Date(updated);
-                document.getElementById("rh-updated").textContent = "Last updated:" + d.toLocaleDateString("en-US") + " " + d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-            }
-
-            const nextEl = document.getElementById("rh-next-interaction");
-            if (nextAct && nextAct.scheduledstart) {
-                const nd = new Date(nextAct.scheduledstart);
-                nextEl.textContent = nd.toLocaleDateString("en-US") + " — " + (nextAct.subject || nextAct.activitytypecode);
+            var name = contact.fullname || "Unknown";
+            document.getElementById("pc-name").textContent = name;
+            document.getElementById("pc-role").textContent = contact.jobtitle || "";
+            var emailEl = document.getElementById("pc-email");
+            if (contact.emailaddress1) {
+                emailEl.textContent = contact.emailaddress1;
+                emailEl.href = "mailto:" + contact.emailaddress1;
+                emailEl.style.display = "";
             } else {
-                nextEl.textContent = "Not Scheduled";
+                emailEl.style.display = "none";
             }
-
-            const lastEl = document.getElementById("rh-last-interaction");
-            if (lastAct && lastAct.actualend) {
-                const ld = new Date(lastAct.actualend);
-                lastEl.textContent = ld.toLocaleDateString("en-US") + " — " + (lastAct.subject || lastAct.activitytypecode);
+            var avatar = document.getElementById("pc-avatar");
+            if (contact.entityimage_url) {
+                avatar.innerHTML = '<img src="' + crmBaseUrl + contact.entityimage_url + '" alt="" />';
             } else {
-                lastEl.textContent = "Not Scheduled";
+                var initials = name.split(" ").map(function(w) { return w[0]; }).join("").substring(0, 2).toUpperCase();
+                avatar.textContent = initials;
             }
         }
 
@@ -1605,12 +1587,12 @@
                 setupPhotoUpload();
                 setupColorPicker();
 
-                // Load related data in parallel
+                // Load related data in parallel (each with own catch so one failure doesn't block others)
                 Promise.all([
-                    fetchPrimaryContact(),
-                    fetchOpenCases(),
-                    fetchDeals(),
-                    fetchOpenOpportunities(),
+                    fetchPrimaryContact().catch(() => null),
+                    fetchOpenCases().catch(() => null),
+                    fetchDeals().catch(() => ({ won: 0, lost: 0 })),
+                    fetchOpenOpportunities().catch(() => null),
                 ]).then(([primaryContact, openCases, deals, openOpps]) => {
                     renderPrimaryContact(primaryContact);
                     if (openCases != null) {
