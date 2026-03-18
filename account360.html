@@ -899,7 +899,10 @@
                     </div>
                     <div class="info-content">
                         <div class="info-label">Relationship Score</div>
-                        <div class="info-value" id="val-relscore"></div>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <div class="info-value" id="val-relscore"></div>
+                            <span class="insight-pill" id="pill-relscore" style="display:none;"></span>
+                        </div>
                         <div class="inline-edit" id="edit-relscore">
                             <input type="number" id="input-relscore" placeholder="0-100" min="0" max="100" />
                             <button class="edit-btn save" onclick="saveField('new_relationshipscore','input-relscore','val-relscore','edit-relscore','integer')">&#10003;</button>
@@ -1202,6 +1205,12 @@
                 const bar = document.getElementById("bar-relscore");
                 bar.style.width = relScore + "%";
                 bar.className = "progress-fill " + getBarColor(relScore);
+
+                const pill = document.getElementById("pill-relscore");
+                pill.style.display = "inline-block";
+                if (relScore >= 70) { pill.textContent = "Strong"; pill.className = "insight-pill high"; }
+                else if (relScore >= 40) { pill.textContent = "Moderate"; pill.className = "insight-pill medium"; }
+                else { pill.textContent = "Weak"; pill.className = "insight-pill low"; }
             } else {
                 setFieldValue("val-relscore", null, "Not set");
                 document.getElementById("bar-relscore").style.width = "0%";
