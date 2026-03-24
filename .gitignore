@@ -1,2 +1,8 @@
 node_modules/
 .msal-cache.json
+deploy.js
+package.json
+package-lock.json
+test-connection.js
+check-fields.js
+create-account-fields.js
