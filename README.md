@@ -2,6 +2,12 @@
 
 A compact, visually rich account profile card designed to be embedded directly on the Account form in Microsoft Dynamics 365 Sales. Gives users an at-a-glance view of account health, scores, and key relationships.
 
+## Screenshots
+
+| Profile Card | Embedded in Dynamics 365 |
+|:------------:|:------------------------:|
+| ![Profile Card](img/profile-card.png) | ![Embedded](img/embedded-in-d365.png) |
+
 ## What It Does
 
 When placed on an Account record, this card displays:
