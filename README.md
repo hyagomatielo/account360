@@ -1,6 +1,6 @@
 # Account 360 Profile Card for Dynamics 365
 
-A compact, visually rich account profile card designed to be embedded directly on the Account form in Microsoft Dynamics 365 Sales. Gives users an at-a-glance view of account details, sales pipeline, and case history.
+A compact account profile card for Microsoft Dynamics 365 Sales that sits directly on the Account form and surfaces account context, pipeline activity, service history, and the linked primary contact in one place.
 
 ## Screenshots
 
@@ -17,16 +17,15 @@ A compact, visually rich account profile card designed to be embedded directly o
 When placed on an Account record, this card displays:
 
 - **Account photo & name** — with initials fallback and image upload support.
-- **Industry & address** — core account details shown inline.
-- **Parent account, website, phone, headquarters, account owner** — two-column layout.
-- **Primary contact** — avatar, name, role, and email. Clickable name navigates to the contact record.
+- **Core account details** — industry, parent account, website, phone, headquarters, and account owner in the aligned header layout.
+- **Primary contact** — avatar, name, title, and email. Clickable name opens the Contact record.
 - **Total Revenue & Annual Contract Value** — editable stat cards.
 - **Sales tab** — current opportunity impact (pipeline value + count), closed won / closed lost / win ratio metrics, with clickable popups that list individual opportunities.
 - **Service tab** — open cases count, resolved / cancelled metrics, with clickable popups that list individual cases by priority.
 - **Inline editing** — click any editable field to update it. Changes save back to Dynamics 365 instantly.
 - **Color customization** — built-in color picker to personalize the card's background and photo border.
 
-Data in the Sales and Service tabs includes records from the account itself **and** all contacts related to that account.
+The Sales and Service tabs roll up data from the account itself **and** from contacts related to that account.
 
 ## How to Use It
 
@@ -40,6 +39,7 @@ No additional servers or installations required. Everything runs inside Dynamics
 
 - Microsoft Dynamics 365 Sales (online)
 - Custom field on the Account entity: `new_annualcontractvalue`
+- Sales and Service metrics depend on related opportunities and cases existing in the environment
 
 ## License
 
