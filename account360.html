@@ -442,7 +442,13 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 2px;
+            text-decoration-color: rgba(255,255,255,0.3);
         }
+        .pc-name:hover { text-decoration-style: solid; opacity: 0.9; }
+        .profile-card.dark-text .pc-name { text-decoration-color: rgba(26,26,46,0.3); }
         .pc-role {
             font-size: 12px;
             color: var(--text-light);
@@ -814,21 +820,6 @@
 
         <!-- Account Info Section -->
         <div class="info-section two-col">
-            <div class="info-row" data-field="accountnumber" data-type="string">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6v-2zm0 4h8v2H6v-2zm10-4h2v2h-2v-2zm-4 0h2v2h-2v-2z"/></svg>
-                </div>
-                <div class="info-content">
-                    <div class="info-label">Account ID</div>
-                    <div class="info-value" id="val-accountid"></div>
-                    <div class="inline-edit" id="edit-accountid">
-                        <input type="text" id="input-accountid" placeholder="Enter Account ID" />
-                        <button class="edit-btn save" onclick="saveField('accountnumber','input-accountid','val-accountid','edit-accountid','string')">&#10003;</button>
-                        <button class="edit-btn cancel" onclick="cancelEdit('val-accountid','edit-accountid')">&#10007;</button>
-                    </div>
-                </div>
-            </div>
-
             <div class="info-row" data-field="parentaccountid" data-type="lookup">
                 <div class="info-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
@@ -1117,7 +1108,7 @@
 
         async function fetchAccount() {
             const select = [
-                "name", "accountnumber", "industrycode",
+                "name", "industrycode",
                 "websiteurl", "telephone1",
                 "address1_line1", "address1_city", "address1_stateorprovince", "address1_postalcode", "address1_country", "address1_composite",
                 "revenue",
@@ -1266,7 +1257,6 @@
             }
 
             // Info fields
-            setFieldValue("val-accountid", data.accountnumber, "No Account ID");
             setFieldValue("val-phone", data.telephone1, "No phone");
 
             // Website — render as link
@@ -1529,7 +1519,22 @@
                 return;
             }
             var name = contact.fullname || "Unknown";
-            document.getElementById("pc-name").textContent = name;
+            var nameEl = document.getElementById("pc-name");
+            nameEl.textContent = name;
+            nameEl.style.cursor = "pointer";
+            nameEl.title = "Open contact record";
+            nameEl.onclick = function() {
+                var cId = accountData && accountData._primarycontactid_value;
+                if (!cId) return;
+                try {
+                    var xrm = getXrmContext();
+                    if (xrm && xrm.Navigation && xrm.Navigation.openForm) {
+                        xrm.Navigation.openForm({ entityName: "contact", entityId: cId });
+                        return;
+                    }
+                } catch (e) {}
+                window.top.location.href = crmBaseUrl + "/main.aspx?etn=contact&id=" + cId + "&pagetype=entityrecord";
+            };
             document.getElementById("pc-role").textContent = contact.jobtitle || "";
             var emailEl = document.getElementById("pc-email");
             if (contact.emailaddress1) {
@@ -1667,8 +1672,7 @@
                 row.addEventListener("click", (e) => {
                     if (e.target.closest(".inline-edit")) return;
                     const field = row.dataset.field;
-                    if (field === "accountnumber") startEdit("val-accountid", "edit-accountid", accountData?.accountnumber);
-                    else if (field === "websiteurl") startEdit("val-website", "edit-website", accountData?.websiteurl);
+                    if (field === "websiteurl") startEdit("val-website", "edit-website", accountData?.websiteurl);
                     else if (field === "telephone1") startEdit("val-phone", "edit-phone", accountData?.telephone1);
                     else if (field === "address1") {
                         document.getElementById("input-address-line1").value = accountData?.address1_line1 || "";
