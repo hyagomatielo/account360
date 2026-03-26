@@ -175,9 +175,7 @@
         .profile-card.dark-text .score-section { border-bottom-color: rgba(26,26,46,0.12); }
         .profile-card.dark-text .info-icon { background: rgba(26,26,46,0.08); border-color: rgba(26,26,46,0.15); }
         .profile-card.dark-text .info-row:hover,
-        .profile-card.dark-text .score-row:hover,
         .profile-card.dark-text .account-name:hover { background: rgba(26,26,46,0.06); }
-        .profile-card.dark-text .progress-bar { background: rgba(255,255,255,0.45); box-shadow: inset 0 1px 2px rgba(0,0,0,0.08); }
         .profile-card.dark-text .inline-edit input,
         .profile-card.dark-text .inline-edit select,
         .profile-card.dark-text .inline-edit textarea { background: rgba(26,26,46,0.08); border-color: rgba(26,26,46,0.2); color: #1a1a2e; }
@@ -189,24 +187,14 @@
         .profile-card.dark-text .photo-placeholder { color: #1a1a2e; border-color: #a07030; }
         .profile-card.dark-text .color-edit-btn { background: rgba(26,26,46,0.08); border-color: rgba(26,26,46,0.15); }
         .profile-card.dark-text .color-edit-btn img { filter: brightness(0); }
-        .profile-card.dark-text .progress-fill.red { background: #c0392b; }
-        .profile-card.dark-text .progress-fill.yellow { background: #d48800; }
-        .profile-card.dark-text .progress-fill.green { background: #1e8449; }
-        .profile-card.dark-text .insight-pill.high { background: rgba(200,245,210,0.85); color: #0d6e1e; }
-        .profile-card.dark-text .insight-pill.medium { background: rgba(255,240,200,0.85); color: #8a5600; }
-        .profile-card.dark-text .insight-pill.low { background: rgba(255,220,215,0.85); color: #a11b12; }
-        .profile-card.dark-text .insight-compare { color: rgba(26,26,46,0.5); }
         .profile-card.dark-text .primary-contact-header { color: #1a1a2e; }
         .profile-card.dark-text .primary-contact-card { background: rgba(26,26,46,0.05); border-color: rgba(26,26,46,0.1); }
         .profile-card.dark-text .pc-avatar { background: rgba(26,26,46,0.1); color: #1a1a2e; }
         .profile-card.dark-text .pc-name { color: #1a1a2e; }
         .profile-card.dark-text .pc-role { color: rgba(26,26,46,0.6); }
         .profile-card.dark-text .primary-contact-section { border-bottom-color: rgba(26,26,46,0.12); }
-        .profile-card.dark-text .section-title { color: #1a1a2e; }
         .profile-card.dark-text .stat-value { color: #1a1a2e; }
         .profile-card.dark-text .stat-label { color: rgba(26,26,46,0.5); }
-        .profile-card.dark-text .deals-bar-won { background: #1e8449; }
-        .profile-card.dark-text .deals-bar-lost { background: #c0392b; }
 
         /* ─── Loading / Error States ────────────── */
         .loading-state {
@@ -357,7 +345,7 @@
             margin-bottom: 14px;
         }
 
-        /* ─── Score Rows (with progress bars) ───── */
+        /* ─── Score Section (tab content) ───────── */
         .score-section {
             padding: 18px 0;
             border-bottom: 1px solid var(--divider);
@@ -366,159 +354,6 @@
             gap: 18px;
         }
         .score-section:last-child { border-bottom: none; }
-        .score-row {
-            cursor: pointer;
-            padding: 4px 6px;
-            border-radius: 6px;
-            transition: background var(--transition);
-        }
-        .score-row:hover { background: var(--edit-hover); }
-        .score-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-        .progress-bar {
-            height: 10px;
-            background: rgba(0,0,0,0.25);
-            border-radius: 5px;
-            overflow: hidden;
-            margin-left: 44px;
-            margin-right: 6px;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
-        }
-        .progress-fill {
-            height: 100%;
-            border-radius: 5px;
-            transition: width 0.6s ease;
-        }
-        .progress-fill.red { background: #e74c3c; }
-        .progress-fill.yellow { background: #f5a623; }
-        .progress-fill.green { background: #4cd964; }
-
-        /* ─── Insight Pills ─────────────────────── */
-        .insight-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 8px;
-            margin-left: 44px;
-            margin-right: 6px;
-        }
-        .insight-body { flex: 1; min-width: 0; }
-        .ltv-value-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .insight-pill {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-        .insight-pill.high { background: rgba(0,60,0,0.7); color: #6ef28e; }
-        .insight-pill.medium { background: rgba(80,50,0,0.7); color: #ffd06a; }
-        .insight-pill.low { background: rgba(80,10,10,0.7); color: #ff8a80; }
-        .insight-compare {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* ─── Deals Bar ─────────────────────────── */
-        .deals-bar-container {
-            display: flex;
-            height: 22px;
-            border-radius: 11px;
-            overflow: hidden;
-            margin-left: 44px;
-            margin-right: 6px;
-            background: rgba(0,0,0,0.25);
-        }
-        .deals-bar-won {
-            background: #4cd964;
-            height: 100%;
-            transition: width 0.6s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #0d3a15;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        .deals-bar-lost {
-            background: #e74c3c;
-            height: 100%;
-            transition: width 0.6s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #fff;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        .deals-legend {
-            display: flex;
-            gap: 16px;
-            margin-left: 44px;
-            margin-top: 6px;
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        .deals-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .deals-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-        }
-        .deals-dot.won { background: #4cd964; }
-        .deals-dot.lost { background: #e74c3c; }
-
-        /* ─── Open Opportunities Highlight ───── */
-        .open-opps-highlight {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--divider);
-            text-align: center;
-        }
-        .open-opps-card {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-            border: 1.5px solid var(--accent);
-            border-radius: 14px;
-            padding: 18px 36px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .open-opps-label {
-            font-size: 10px;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        .open-opps-value {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--text-white);
-        }
-        .open-opps-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .profile-card.dark-text .open-opps-card { background: linear-gradient(135deg, rgba(26,26,46,0.06), rgba(26,26,46,0.02)); }
-        .profile-card.dark-text .open-opps-value { color: #1a1a2e; }
 
         /* ─── Mini Stats Grid ───────────────────── */
         .stats-grid {
@@ -703,6 +538,225 @@
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         #photo-upload { display: none; }
+
+        /* ─── Tab System ─────────────────────── */
+        .tab-bar {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--divider);
+            margin-bottom: 0;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 10px 0;
+            background: none;
+            border: none;
+            border-bottom: 2.5px solid transparent;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            transition: color var(--transition), border-color var(--transition);
+            font-family: inherit;
+            text-align: center;
+        }
+        .tab-btn:hover { color: var(--text-light); }
+        .tab-btn.active {
+            color: var(--text-white);
+            border-bottom-color: var(--text-white);
+        }
+        .profile-card.dark-text .tab-btn { color: rgba(26,26,46,0.4); }
+        .profile-card.dark-text .tab-btn:hover { color: rgba(26,26,46,0.65); }
+        .profile-card.dark-text .tab-btn.active { color: #1a1a2e; border-bottom-color: #1a1a2e; }
+        .profile-card.dark-text .tab-bar { border-bottom-color: rgba(26,26,46,0.12); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ─── Opportunity Metrics ────────────────── */
+        .opp-metrics-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .opp-metric-card {
+            flex: 1;
+            text-align: center;
+            padding: 14px 8px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background var(--transition), transform 0.15s ease;
+        }
+        .opp-metric-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+        .opp-metric-card.won, .opp-metric-card.lost { cursor: pointer; }
+        .opp-metric-icon {
+            width: 28px; height: 28px;
+            margin: 0 auto 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .opp-metric-icon svg { width: 18px; height: 18px; }
+        .opp-metric-card.won .opp-metric-icon { background: rgba(76,217,100,0.18); }
+        .opp-metric-card.won .opp-metric-icon svg { fill: #4cd964; }
+        .opp-metric-card.lost .opp-metric-icon { background: rgba(255,59,48,0.18); }
+        .opp-metric-card.lost .opp-metric-icon svg { fill: #ff3b30; }
+        .opp-metric-card.ratio .opp-metric-icon { background: rgba(90,200,250,0.18); }
+        .opp-metric-card.ratio .opp-metric-icon svg { fill: #5ac8fa; }
+        .opp-metric-number {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-white);
+            line-height: 1.1;
+        }
+        .opp-metric-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .opp-impact-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 6px;
+            border-radius: 8px;
+            transition: background var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+        .opp-impact-row:hover { background: var(--edit-hover); }
+        .opp-impact-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ─── Opportunity Popup ──────────────────── */
+        .opp-popup {
+            display: none;
+            background: rgba(12,12,25,0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-top: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        .opp-popup.open { display: block; }
+        .opp-popup-title {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .opp-popup-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.15s ease;
+        }
+        .opp-popup-item:hover { background: rgba(255,255,255,0.08); }
+        .opp-popup-item:last-child { border-bottom: none; }
+        .opp-popup-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-white);
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 10px;
+        }
+        .opp-popup-value {
+            font-size: 12px;
+            font-weight: 700;
+            color: #4cd964;
+            flex-shrink: 0;
+        }
+        .opp-popup-value.lost-value { color: #ff8a80; }
+        .profile-card.dark-text .opp-popup-value.lost-value { color: #a11b12; }
+        .opp-popup-empty {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .profile-card.dark-text .opp-popup {
+            background: rgba(255,255,255,0.95);
+            border-color: rgba(26,26,46,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+        .profile-card.dark-text .opp-popup-title { color: rgba(26,26,46,0.5); }
+        .profile-card.dark-text .opp-popup-name { color: #1a1a2e; }
+        .profile-card.dark-text .opp-popup-value { color: #0d6e1e; }
+        .profile-card.dark-text .opp-popup-item { border-bottom-color: rgba(26,26,46,0.08); }
+        .profile-card.dark-text .opp-popup-item:hover { background: rgba(26,26,46,0.06); }
+        .profile-card.dark-text .opp-popup-empty { color: rgba(26,26,46,0.4); }
+        .profile-card.dark-text .opp-metric-card { background: rgba(26,26,46,0.06); border-color: rgba(26,26,46,0.12); }
+        .profile-card.dark-text .opp-metric-card:hover { background: rgba(26,26,46,0.1); }
+        .profile-card.dark-text .opp-metric-number { color: #1a1a2e; }
+        .profile-card.dark-text .opp-metric-label { color: rgba(26,26,46,0.5); }
+        .profile-card.dark-text .opp-impact-sub { color: rgba(26,26,46,0.5); }
+
+        /* ─── Case History Section ────────────── */
+        .case-impact-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 6px;
+            border-radius: 8px;
+            transition: background var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+        .case-impact-row:hover { background: var(--edit-hover); }
+        .case-impact-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .case-metrics-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .case-metric-card {
+            flex: 1;
+            text-align: center;
+            padding: 14px 8px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background var(--transition), transform 0.15s ease;
+        }
+        .case-metric-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+        .case-metric-card.resolved, .case-metric-card.cancelled { cursor: pointer; }
+        .case-metric-card .opp-metric-icon { width: 28px; height: 28px; margin: 0 auto 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .case-metric-card .opp-metric-icon svg { width: 18px; height: 18px; }
+        .case-metric-card.resolved .opp-metric-icon { background: rgba(76,217,100,0.18); }
+        .case-metric-card.resolved .opp-metric-icon svg { fill: #4cd964; }
+        .case-metric-card.cancelled .opp-metric-icon { background: rgba(255,149,0,0.18); }
+        .case-metric-card.cancelled .opp-metric-icon svg { fill: #ff9500; }
+        .case-metric-card .opp-metric-number { font-size: 22px; font-weight: 800; color: var(--text-white); line-height: 1.1; }
+        .case-metric-card .opp-metric-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 4px; }
+        .profile-card.dark-text .case-metric-card { background: rgba(26,26,46,0.06); border-color: rgba(26,26,46,0.12); }
+        .profile-card.dark-text .case-metric-card:hover { background: rgba(26,26,46,0.1); }
+        .profile-card.dark-text .case-metric-card .opp-metric-number { color: #1a1a2e; }
+        .profile-card.dark-text .case-metric-card .opp-metric-label { color: rgba(26,26,46,0.5); }
+        .profile-card.dark-text .case-impact-sub { color: rgba(26,26,46,0.5); }
     </style>
 </head>
 <body>
@@ -860,16 +914,7 @@
             </div>
         </div>
 
-        <!-- Open Opportunities (highlighted) -->
-        <div class="open-opps-highlight">
-            <div class="open-opps-card">
-                <div class="open-opps-label">Open Opportunities</div>
-                <div class="open-opps-value" id="val-openopps">—</div>
-                <div class="open-opps-sub" id="sub-openopps"></div>
-            </div>
-        </div>
-
-        <!-- Stats Grid: Revenue, ACV, Open Cases, NPS -->
+        <!-- Stats Grid: Revenue, ACV -->
         <div class="stats-grid" id="stats-grid">
             <div class="stat-card" data-field="revenue" data-type="money">
                 <div class="stat-label">Total Revenue</div>
@@ -889,74 +934,106 @@
                     <button class="edit-btn cancel" onclick="cancelEdit('val-acv','edit-acv')">&#10007;</button>
                 </div>
             </div>
-            <div class="stat-card" id="stat-opencases">
-                <div class="stat-label">Open Cases</div>
-                <div class="stat-value" id="val-opencases">—</div>
-                <div class="stat-sub" id="sub-opencases"></div>
-            </div>
-            <div class="stat-card" data-field="new_npsscore" data-type="integer">
-                <div class="stat-label">NPS Score</div>
-                <div class="stat-value" id="val-nps">—</div>
-                <div class="inline-edit" id="edit-nps">
-                    <input type="number" id="input-nps" placeholder="-100 to 100" min="-100" max="100" />
-                    <button class="edit-btn save" onclick="saveField('new_npsscore','input-nps','val-nps','edit-nps','integer')">&#10003;</button>
-                    <button class="edit-btn cancel" onclick="cancelEdit('val-nps','edit-nps')">&#10007;</button>
+        </div>
+
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+            <button class="tab-btn active" data-tab="tab-sales">Sales</button>
+            <button class="tab-btn" data-tab="tab-service">Service</button>
+        </div>
+
+        <!-- Sales Tab -->
+        <div class="tab-content active" id="tab-sales">
+            <div class="score-section" id="opp-metrics-section">
+                <div class="opp-impact-row" id="opp-impact-row">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">CURRENT OPPORTUNITY IMPACT</div>
+                        <div class="info-value" id="val-opp-impact">—</div>
+                        <div class="opp-impact-sub" id="val-opp-impact-count"></div>
+                    </div>
+                </div>
+                <div class="opp-popup" id="opp-popup">
+                    <div class="opp-popup-title">Open Opportunities</div>
+                    <div id="opp-popup-list"></div>
+                </div>
+                <div class="opp-metrics-row">
+                    <div class="opp-metric-card won" id="opp-card-won">
+                        <div class="opp-metric-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </div>
+                        <div class="opp-metric-number" id="val-won">—</div>
+                        <div class="opp-metric-label">Closed Won</div>
+                    </div>
+                    <div class="opp-metric-card lost" id="opp-card-lost">
+                        <div class="opp-metric-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                        </div>
+                        <div class="opp-metric-number" id="val-lost">—</div>
+                        <div class="opp-metric-label">Closed Lost</div>
+                    </div>
+                    <div class="opp-metric-card ratio">
+                        <div class="opp-metric-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                        </div>
+                        <div class="opp-metric-number" id="val-winratio">—</div>
+                        <div class="opp-metric-label">Win Ratio</div>
+                    </div>
+                </div>
+                <div class="opp-popup" id="opp-popup-won">
+                    <div class="opp-popup-title">Closed Won Opportunities</div>
+                    <div id="opp-popup-won-list"></div>
+                </div>
+                <div class="opp-popup" id="opp-popup-lost">
+                    <div class="opp-popup-title">Closed Lost Opportunities</div>
+                    <div id="opp-popup-lost-list"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Churn Risk + Relationship Score -->
-        <div class="score-section">
-            <div class="score-row" data-field="new_churnrisk" data-type="integer">
-                <div class="score-header">
+        <!-- Service Tab -->
+        <div class="tab-content" id="tab-service">
+            <div class="score-section" id="case-metrics-section">
+                <div class="case-impact-row" id="case-impact-row">
                     <div class="info-icon">
-                        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z"/></svg>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Churn Risk</div>
-                        <div class="ltv-value-row">
-                            <div class="info-value" id="val-churnrisk"></div>
-                            <span class="insight-pill" id="pill-churnrisk" style="display:none;"></span>
-                        </div>
-                        <div class="inline-edit" id="edit-churnrisk">
-                            <input type="number" id="input-churnrisk" placeholder="0-100" min="0" max="100" />
-                            <button class="edit-btn save" onclick="saveField('new_churnrisk','input-churnrisk','val-churnrisk','edit-churnrisk','integer')">&#10003;</button>
-                            <button class="edit-btn cancel" onclick="cancelEdit('val-churnrisk','edit-churnrisk')">&#10007;</button>
-                        </div>
+                        <div class="info-label">OPEN CASES</div>
+                        <div class="info-value" id="val-case-impact">—</div>
+                        <div class="case-impact-sub" id="val-case-impact-count"></div>
                     </div>
                 </div>
-                <div class="progress-bar"><div class="progress-fill" id="bar-churnrisk"></div></div>
-            </div>
-
-            <div class="score-row" data-field="new_relationshipscore" data-type="integer">
-                <div class="score-header">
-                    <div class="info-icon">
-                        <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/></svg>
+                <div class="opp-popup" id="case-popup">
+                    <div class="opp-popup-title">Active Cases</div>
+                    <div id="case-popup-list"></div>
+                </div>
+                <div class="case-metrics-row">
+                    <div class="case-metric-card resolved" id="case-card-resolved">
+                        <div class="opp-metric-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </div>
+                        <div class="opp-metric-number" id="val-cases-resolved">—</div>
+                        <div class="opp-metric-label">Resolved</div>
                     </div>
-                    <div class="info-content">
-                        <div class="info-label">Relationship Score</div>
-                        <div style="display:flex;align-items:center;gap:8px;">
-                            <div class="info-value" id="val-relscore"></div>
-                            <span class="insight-pill" id="pill-relscore" style="display:none;"></span>
+                    <div class="case-metric-card cancelled" id="case-card-cancelled">
+                        <div class="opp-metric-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
                         </div>
-                        <div class="inline-edit" id="edit-relscore">
-                            <input type="number" id="input-relscore" placeholder="0-100" min="0" max="100" />
-                            <button class="edit-btn save" onclick="saveField('new_relationshipscore','input-relscore','val-relscore','edit-relscore','integer')">&#10003;</button>
-                            <button class="edit-btn cancel" onclick="cancelEdit('val-relscore','edit-relscore')">&#10007;</button>
-                        </div>
+                        <div class="opp-metric-number" id="val-cases-cancelled">—</div>
+                        <div class="opp-metric-label">Cancelled</div>
                     </div>
                 </div>
-                <div class="progress-bar"><div class="progress-fill" id="bar-relscore"></div></div>
-            </div>
-        </div>
-
-        <!-- Won vs Lost Deals -->
-        <div class="score-section" id="deals-section">
-            <div class="section-title">Won vs Lost Deals</div>
-            <div class="deals-bar-container" id="deals-bar"></div>
-            <div class="deals-legend" id="deals-legend">
-                <div class="deals-legend-item"><span class="deals-dot won"></span><span id="deals-won-label">Won: 0</span></div>
-                <div class="deals-legend-item"><span class="deals-dot lost"></span><span id="deals-lost-label">Lost: 0</span></div>
+                <div class="opp-popup" id="case-popup-resolved">
+                    <div class="opp-popup-title">Resolved Cases</div>
+                    <div id="case-popup-resolved-list"></div>
+                </div>
+                <div class="opp-popup" id="case-popup-cancelled">
+                    <div class="opp-popup-title">Cancelled Cases</div>
+                    <div id="case-popup-cancelled-list"></div>
+                </div>
             </div>
         </div>
 
@@ -1044,8 +1121,7 @@
                 "websiteurl", "telephone1",
                 "address1_line1", "address1_city", "address1_stateorprovince", "address1_postalcode", "address1_country", "address1_composite",
                 "revenue",
-                "new_annualcontractvalue", "new_npsscore",
-                "new_churnrisk", "new_relationshipscore",
+                "new_annualcontractvalue",
                 "entityimage_url",
                 "_parentaccountid_value", "_ownerid_value", "_primarycontactid_value",
             ].join(",");
@@ -1067,34 +1143,67 @@
         }
 
         // ─── Fetch related data ─────────────────────────────────
-        async function fetchOpenCases() {
+        async function fetchContactIds() {
             try {
-                const data = await crmApiFetch("/incidents?$filter=_customerid_value eq " + accountId + " and statecode eq 0&$select=incidentid&$count=true");
-                return data && data.value ? data.value.length : 0;
-            } catch (e) { return null; }
+                var data = await crmApiFetch("/contacts?$filter=_parentcustomerid_value eq " + accountId + "&$select=contactid");
+                return data && data.value ? data.value.map(function(c) { return c.contactid; }) : [];
+            } catch (e) { return []; }
         }
 
-        async function fetchOpenOpportunities() {
+        async function fetchOpportunityMetrics() {
             try {
-                const data = await crmApiFetch("/opportunities?$filter=_parentaccountid_value eq " + accountId + " and statecode eq 0&$select=estimatedvalue");
-                if (data && data.value) {
-                    let total = 0;
-                    data.value.forEach(o => { total += (o.estimatedvalue || 0); });
-                    return { count: data.value.length, total: total };
+                var contactIds = await fetchContactIds();
+                // Account opportunities
+                var data = await crmApiFetch("/opportunities?$filter=_parentaccountid_value eq " + accountId + "&$select=name,statecode,statuscode,estimatedvalue,actualvalue,opportunityid");
+                var opps = data && data.value ? data.value : [];
+                // Also fetch opportunities from related contacts
+                for (var i = 0; i < contactIds.length; i++) {
+                    var cData = await crmApiFetch("/opportunities?$filter=_parentcontactid_value eq " + contactIds[i] + " and _parentaccountid_value ne " + accountId + "&$select=name,statecode,statuscode,estimatedvalue,actualvalue,opportunityid");
+                    if (cData && cData.value) opps = opps.concat(cData.value);
                 }
-                return { count: 0, total: 0 };
+                // Deduplicate by opportunityid
+                var seen = {};
+                opps = opps.filter(function(o) {
+                    if (seen[o.opportunityid]) return false;
+                    seen[o.opportunityid] = true;
+                    return true;
+                });
+
+                var won = opps.filter(function(o) { return o.statuscode === 3; });
+                var lost = opps.filter(function(o) { return o.statuscode === 4; });
+                var open = opps.filter(function(o) { return o.statecode === 0; });
+                var closed = won.length + lost.length;
+                var winRatio = closed > 0 ? Math.round((won.length / closed) * 100) : null;
+                var openValue = open.reduce(function(sum, o) { return sum + (o.estimatedvalue || 0); }, 0);
+
+                return { won: won.length, lost: lost.length, winRatio: winRatio, openCount: open.length, openValue: openValue, openOpps: open, wonOpps: won, lostOpps: lost };
             } catch (e) { return null; }
         }
 
-        async function fetchDeals() {
+        async function fetchCaseMetrics() {
             try {
-                const won = await crmApiFetch("/opportunities?$filter=_parentaccountid_value eq " + accountId + " and statecode eq 1&$select=opportunityid&$count=true");
-                const lost = await crmApiFetch("/opportunities?$filter=_parentaccountid_value eq " + accountId + " and statecode eq 2&$select=opportunityid&$count=true");
-                return {
-                    won: won && won.value ? won.value.length : 0,
-                    lost: lost && lost.value ? lost.value.length : 0,
-                };
-            } catch (e) { return { won: 0, lost: 0 }; }
+                var contactIds = await fetchContactIds();
+                // Account cases
+                var data = await crmApiFetch("/incidents?$filter=_customerid_value eq " + accountId + "&$select=title,statecode,statuscode,prioritycode,createdon,incidentid");
+                var cases = data && data.value ? data.value : [];
+                // Also fetch cases from related contacts
+                for (var i = 0; i < contactIds.length; i++) {
+                    var cData = await crmApiFetch("/incidents?$filter=_customerid_value eq " + contactIds[i] + "&$select=title,statecode,statuscode,prioritycode,createdon,incidentid");
+                    if (cData && cData.value) cases = cases.concat(cData.value);
+                }
+                // Deduplicate by incidentid
+                var seen = {};
+                cases = cases.filter(function(c) {
+                    if (seen[c.incidentid]) return false;
+                    seen[c.incidentid] = true;
+                    return true;
+                });
+
+                var active = cases.filter(function(c) { return c.statecode === 0; });
+                var resolved = cases.filter(function(c) { return c.statecode === 1; });
+                var cancelled = cases.filter(function(c) { return c.statecode === 2; });
+                return { activeCount: active.length, resolvedCount: resolved.length, cancelledCount: cancelled.length, activeCases: active, resolvedCases: resolved, cancelledCases: cancelled };
+            } catch (e) { return null; }
         }
 
         async function fetchPrimaryContact() {
@@ -1199,52 +1308,6 @@
                 setFieldValue("val-acv", null, "—");
             }
 
-            // NPS
-            const nps = data.new_npsscore;
-            if (nps != null) {
-                const color = nps >= 50 ? "#6ef28e" : nps >= 0 ? "#ffd06a" : "#ff8a80";
-                document.getElementById("val-nps").innerHTML = '<span style="color:' + color + '">' + nps + '</span>';
-                document.getElementById("val-nps").classList.remove("empty");
-            } else {
-                setFieldValue("val-nps", null, "—");
-            }
-
-            // Churn Risk
-            const churn = data.new_churnrisk;
-            if (churn != null) {
-                setFieldValue("val-churnrisk", churn + "%");
-                const bar = document.getElementById("bar-churnrisk");
-                bar.style.width = churn + "%";
-                // Invert: high churn = red
-                bar.className = "progress-fill " + (churn >= 70 ? "red" : churn >= 40 ? "yellow" : "green");
-                const pill = document.getElementById("pill-churnrisk");
-                pill.style.display = "";
-                if (churn >= 70) { pill.textContent = "High Risk"; pill.className = "insight-pill low"; }
-                else if (churn >= 40) { pill.textContent = "Medium Risk"; pill.className = "insight-pill medium"; }
-                else { pill.textContent = "Low Risk"; pill.className = "insight-pill high"; }
-            } else {
-                setFieldValue("val-churnrisk", null, "Not set");
-                document.getElementById("bar-churnrisk").style.width = "0%";
-            }
-
-            // Relationship Score
-            const relScore = data.new_relationshipscore;
-            if (relScore != null) {
-                setFieldValue("val-relscore", relScore + "%");
-                const bar = document.getElementById("bar-relscore");
-                bar.style.width = relScore + "%";
-                bar.className = "progress-fill " + getBarColor(relScore);
-
-                const pill = document.getElementById("pill-relscore");
-                pill.style.display = "inline-block";
-                if (relScore >= 70) { pill.textContent = "Strong"; pill.className = "insight-pill high"; }
-                else if (relScore >= 40) { pill.textContent = "Moderate"; pill.className = "insight-pill medium"; }
-                else { pill.textContent = "Weak"; pill.className = "insight-pill low"; }
-            } else {
-                setFieldValue("val-relscore", null, "Not set");
-                document.getElementById("bar-relscore").style.width = "0%";
-            }
-
         }
 
         function setFieldValue(elementId, value, emptyText) {
@@ -1283,30 +1346,176 @@
             return parts.join("\n") || "";
         }
 
-        function getBarColor(score) {
-            if (score >= 81) return "green";
-            if (score >= 60) return "yellow";
-            return "red";
+        // ─── Opportunity rendering ───────────────────────────────
+        function navigateToOpportunity(oppId) {
+            try {
+                var xrm = getXrmContext();
+                if (xrm && xrm.Navigation && xrm.Navigation.openForm) {
+                    xrm.Navigation.openForm({ entityName: "opportunity", entityId: oppId });
+                    return;
+                }
+            } catch (e) {}
+            var url = crmBaseUrl + "/main.aspx?etn=opportunity&id=" + oppId + "&pagetype=entityrecord";
+            window.top.location.href = url;
         }
 
-        // ─── Render deals ───────────────────────────────────────
-        function renderDeals(deals) {
-            const total = deals.won + deals.lost;
-            const bar = document.getElementById("deals-bar");
-            if (total === 0) {
-                bar.innerHTML = '';
-                document.getElementById("deals-won-label").textContent = "Won: 0";
-                document.getElementById("deals-lost-label").textContent = "Lost: 0";
-                return;
-            }
-            const wonPct = (deals.won / total) * 100;
-            const lostPct = (deals.lost / total) * 100;
-            const wonLabel = wonPct >= 15 ? Math.round(wonPct) + '%' : '';
-            const lostLabel = lostPct >= 15 ? Math.round(lostPct) + '%' : '';
-            bar.innerHTML = '<div class="deals-bar-won" style="width:' + wonPct + '%;">' + wonLabel + '</div><div class="deals-bar-lost" style="width:' + lostPct + '%;">' + lostLabel + '</div>';
-            document.getElementById("deals-won-label").textContent = "Won: " + deals.won;
-            document.getElementById("deals-lost-label").textContent = "Lost: " + deals.lost;
+        function buildOppListHtml(opps, valueField, valueClass) {
+            if (!opps || opps.length === 0) return '<div class="opp-popup-empty">None</div>';
+            return opps.map(function(o) {
+                var rawVal = o[valueField] != null ? o[valueField] : o.estimatedvalue;
+                var val = rawVal != null ? "$" + rawVal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—";
+                var name = o.name || "Unnamed Opportunity";
+                var cls = valueClass ? ' ' + valueClass : '';
+                return '<div class="opp-popup-item" data-oppid="' + o.opportunityid + '" onclick="navigateToOpportunity(\'' + o.opportunityid + '\')">' +
+                    '<span class="opp-popup-name" title="' + name.replace(/"/g, '&quot;') + '">' + name + '</span>' +
+                    '<span class="opp-popup-value' + cls + '">' + val + '</span></div>';
+            }).join("");
         }
+
+        function renderOpportunityMetrics(metrics) {
+            if (!metrics) return;
+
+            document.getElementById("val-won").textContent = metrics.won;
+            document.getElementById("val-lost").textContent = metrics.lost;
+
+            var ratioEl = document.getElementById("val-winratio");
+            if (metrics.winRatio != null) {
+                ratioEl.textContent = metrics.winRatio + "%";
+            } else {
+                ratioEl.textContent = "N/A";
+            }
+
+            var impactEl = document.getElementById("val-opp-impact");
+            var countEl = document.getElementById("val-opp-impact-count");
+            var popupList = document.getElementById("opp-popup-list");
+
+            if (metrics.openCount > 0) {
+                impactEl.textContent = "$" + metrics.openValue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                impactEl.classList.remove("empty");
+                countEl.textContent = metrics.openCount + " open " + (metrics.openCount === 1 ? "opportunity" : "opportunities");
+                popupList.innerHTML = buildOppListHtml(metrics.openOpps, "estimatedvalue", "");
+            } else {
+                impactEl.textContent = "No open opportunities";
+                impactEl.classList.add("empty");
+                countEl.textContent = "";
+                popupList.innerHTML = '<div class="opp-popup-empty">No open opportunities</div>';
+            }
+
+            document.getElementById("opp-popup-won-list").innerHTML = buildOppListHtml(metrics.wonOpps, "actualvalue", "");
+            document.getElementById("opp-popup-lost-list").innerHTML = buildOppListHtml(metrics.lostOpps, "estimatedvalue", "lost-value");
+        }
+
+        // ─── Case rendering ─────────────────────────────────────
+        function navigateToCase(caseId) {
+            try {
+                var xrm = getXrmContext();
+                if (xrm && xrm.Navigation && xrm.Navigation.openForm) {
+                    xrm.Navigation.openForm({ entityName: "incident", entityId: caseId });
+                    return;
+                }
+            } catch (e) {}
+            var url = crmBaseUrl + "/main.aspx?etn=incident&id=" + caseId + "&pagetype=entityrecord";
+            window.top.location.href = url;
+        }
+
+        function buildCaseListHtml(cases) {
+            if (!cases || cases.length === 0) return '<div class="opp-popup-empty">None</div>';
+            var priorityMap = { 1: "High", 2: "Normal", 3: "Low" };
+            return cases.map(function(c) {
+                var title = c.title || "Untitled Case";
+                var priority = priorityMap[c.prioritycode] || "";
+                var badge = priority ? '<span class="opp-popup-value" style="font-size:10px;color:' + (c.prioritycode === 1 ? '#ff8a80' : 'var(--text-muted)') + '">' + priority + '</span>' : '';
+                return '<div class="opp-popup-item" data-caseid="' + c.incidentid + '" onclick="navigateToCase(\'' + c.incidentid + '\')">' +
+                    '<span class="opp-popup-name" title="' + title.replace(/"/g, '&quot;') + '">' + title + '</span>' +
+                    badge + '</div>';
+            }).join("");
+        }
+
+        function renderCaseMetrics(metrics) {
+            if (!metrics) return;
+            document.getElementById("val-cases-resolved").textContent = metrics.resolvedCount;
+            document.getElementById("val-cases-cancelled").textContent = metrics.cancelledCount;
+
+            var impactEl = document.getElementById("val-case-impact");
+            var countEl = document.getElementById("val-case-impact-count");
+            var popupList = document.getElementById("case-popup-list");
+
+            if (metrics.activeCount > 0) {
+                impactEl.textContent = metrics.activeCount + " active " + (metrics.activeCount === 1 ? "case" : "cases");
+                impactEl.classList.remove("empty");
+                countEl.textContent = "Click to view details";
+                popupList.innerHTML = buildCaseListHtml(metrics.activeCases);
+            } else {
+                impactEl.textContent = "No open cases";
+                impactEl.classList.add("empty");
+                countEl.textContent = "";
+                popupList.innerHTML = '<div class="opp-popup-empty">No active cases</div>';
+            }
+
+            document.getElementById("case-popup-resolved-list").innerHTML = buildCaseListHtml(metrics.resolvedCases);
+            document.getElementById("case-popup-cancelled-list").innerHTML = buildCaseListHtml(metrics.cancelledCases);
+        }
+
+        // ─── Popup toggle logic (mutual exclusion) ──────────────
+        (function() {
+            var popupMap = {
+                "opp-impact-row": "opp-popup",
+                "opp-card-won": "opp-popup-won",
+                "opp-card-lost": "opp-popup-lost",
+                "case-impact-row": "case-popup",
+                "case-card-resolved": "case-popup-resolved",
+                "case-card-cancelled": "case-popup-cancelled"
+            };
+            var allPopupIds = ["opp-popup", "opp-popup-won", "opp-popup-lost", "case-popup", "case-popup-resolved", "case-popup-cancelled"];
+
+            function closeAllPopups(except) {
+                allPopupIds.forEach(function(id) {
+                    if (id !== except) {
+                        var el = document.getElementById(id);
+                        if (el) el.classList.remove("open");
+                    }
+                });
+            }
+
+            document.addEventListener("click", function(e) {
+                if (e.target.closest(".opp-popup-item[data-oppid]")) return;
+                if (e.target.closest(".opp-popup-item[data-caseid]")) return;
+
+                var triggered = false;
+                Object.keys(popupMap).forEach(function(triggerId) {
+                    var trigger = document.getElementById(triggerId);
+                    if (trigger && trigger.contains(e.target)) {
+                        var popupId = popupMap[triggerId];
+                        var popup = document.getElementById(popupId);
+                        var isOpen = popup.classList.contains("open");
+                        closeAllPopups();
+                        if (!isOpen) popup.classList.add("open");
+                        triggered = true;
+                    }
+                });
+
+                if (!triggered) {
+                    var insidePopup = allPopupIds.some(function(id) {
+                        var el = document.getElementById(id);
+                        return el && el.contains(e.target);
+                    });
+                    if (!insidePopup) closeAllPopups();
+                }
+            });
+        })();
+
+        // ─── Tab Switching ──────────────────────────────────────
+        (function() {
+            document.querySelectorAll(".tab-btn").forEach(function(btn) {
+                btn.addEventListener("click", function() {
+                    var tabId = btn.getAttribute("data-tab");
+                    document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
+                    document.querySelectorAll(".tab-content").forEach(function(tc) { tc.classList.remove("active"); });
+                    btn.classList.add("active");
+                    document.getElementById(tabId).classList.add("active");
+                });
+            });
+        })();
 
         // ─── Render Primary Contact ─────────────────────────────
         function renderPrimaryContact(contact) {
@@ -1475,9 +1684,6 @@
             document.querySelectorAll(".score-row").forEach(row => {
                 row.addEventListener("click", (e) => {
                     if (e.target.closest(".inline-edit")) return;
-                    const field = row.dataset.field;
-                    if (field === "new_churnrisk") startEdit("val-churnrisk", "edit-churnrisk", accountData?.new_churnrisk);
-                    else if (field === "new_relationshipscore") startEdit("val-relscore", "edit-relscore", accountData?.new_relationshipscore);
                 });
             });
 
@@ -1487,7 +1693,6 @@
                     const field = card.dataset.field;
                     if (field === "revenue") startEdit("val-revenue", "edit-revenue", accountData?.revenue);
                     else if (field === "new_annualcontractvalue") startEdit("val-acv", "edit-acv", accountData?.new_annualcontractvalue);
-                    else if (field === "new_npsscore") startEdit("val-nps", "edit-nps", accountData?.new_npsscore);
                 });
             });
 
@@ -1627,23 +1832,15 @@
                 setupPhotoUpload();
                 setupColorPicker();
 
-                // Load related data in parallel (each with own catch so one failure doesn't block others)
+                // Load related data in parallel
                 Promise.all([
                     fetchPrimaryContact().catch(() => null),
-                    fetchOpenCases().catch(() => null),
-                    fetchDeals().catch(() => ({ won: 0, lost: 0 })),
-                    fetchOpenOpportunities().catch(() => null),
-                ]).then(([primaryContact, openCases, deals, openOpps]) => {
+                    fetchOpportunityMetrics().catch(() => null),
+                    fetchCaseMetrics().catch(() => null),
+                ]).then(([primaryContact, oppMetrics, caseMetrics]) => {
                     renderPrimaryContact(primaryContact);
-                    if (openCases != null) {
-                        setFieldValue("val-opencases", String(openCases));
-                    }
-                    renderDeals(deals);
-                    if (openOpps != null) {
-                        const fmt = openOpps.total.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 });
-                        setFieldValue("val-openopps", fmt);
-                        document.getElementById("sub-openopps").textContent = openOpps.count + " open";
-                    }
+                    renderOpportunityMetrics(oppMetrics);
+                    renderCaseMetrics(caseMetrics);
                 }).catch(() => {});
             } catch (err) {
                 document.getElementById("loading-screen").classList.add("hidden");
