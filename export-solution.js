@@ -6,7 +6,11 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
 
-const CRM_BASE_URL = "https://hyagom.crm.dynamics.com";
+const CRM_BASE_URL = process.env.CRM_BASE_URL;
+if (!CRM_BASE_URL) {
+    console.error("ERROR: Set CRM_BASE_URL environment variable, e.g. $env:CRM_BASE_URL='https://yourorg.crm.dynamics.com'");
+    process.exit(1);
+}
 const API_URL = CRM_BASE_URL + "/api/data/v9.2";
 const PUBLIC_CLIENT_ID = "51f81489-12ee-4a9e-aaae-a2591f45987d";
 const SOLUTION_NAME = "Account360";
